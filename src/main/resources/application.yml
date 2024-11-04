@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/vehicle_service_system
+    username: root
+    password: 1234D
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
