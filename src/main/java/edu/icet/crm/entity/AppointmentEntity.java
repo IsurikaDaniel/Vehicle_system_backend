@@ -22,7 +22,7 @@ public class AppointmentEntity {
     private Long id;
     private String name;
     private String vehicleType;
-    private Integer number;
+    private String number;
     private String email;
     private LocalDate date;
     private String location;

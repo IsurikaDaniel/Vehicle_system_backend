@@ -4,9 +4,8 @@ import edu.icet.crm.dto.Appointment;
 import edu.icet.crm.service.AppointmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +18,13 @@ public class AppointmentController {
     final AppointmentService service;
 
     @GetMapping("/get-all")
-    public List<Appointment> getCustomer(){
+    public List<Appointment> getAppointment(){
         return service.getAll();
+    }
+
+    @PostMapping("/add-appointment")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addAppointment(@RequestBody Appointment appointment){
+        service.addAppointment(appointment);
     }
 }
