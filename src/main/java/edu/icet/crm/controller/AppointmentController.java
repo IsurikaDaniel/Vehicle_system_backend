@@ -27,4 +27,22 @@ public class AppointmentController {
     public void addAppointment(@RequestBody Appointment appointment){
         service.addAppointment(appointment);
     }
+
+    @GetMapping("/search-by-id/{id}")
+    public Appointment getAppointmentById(@PathVariable Long id){
+        return service.searchAppointmentById(id);
+    }
+
+    @DeleteMapping("/delete-by-id/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void deleteAppointmentById(@PathVariable Long id){
+        service.deleteAppointmentById(id);
+    }
+
+    @PutMapping("/update-appointment")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void updateAppointmentById(@RequestBody Appointment appointment){
+        service.updateAppointmentById(appointment);
+    }
+
 }

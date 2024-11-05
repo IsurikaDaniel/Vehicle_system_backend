@@ -28,14 +28,15 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void deleteAppointmentById(Integer id) {
+    public void deleteAppointmentById(Long id) {
 
     }
 
     @Override
-    public Appointment searchAppointmentById(Integer id) {
+    public Appointment searchAppointmentById(Long id) {
         return null;
     }
+
 
     @Override
     public void updateAppointmentById(Appointment appointment) {
