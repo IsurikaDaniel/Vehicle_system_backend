@@ -29,7 +29,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/search-by-id/{id}")
-    public Appointment getAppointmentById(@PathVariable Long id){
+    public Appointment searchAppointmentById(@PathVariable Long id){
         return service.searchAppointmentById(id);
     }
 

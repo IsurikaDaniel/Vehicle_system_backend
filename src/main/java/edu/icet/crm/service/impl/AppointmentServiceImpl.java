@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,7 +20,11 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<Appointment> getAll() {
-        return List.of();
+        List<Appointment> appointmentArrayList = new ArrayList<>();
+        repository.findAll().forEach(entity->{
+            appointmentArrayList.add(mapper.map(entity, Appointment.class));
+        });
+        return appointmentArrayList;
     }
 
     @Override
@@ -29,17 +34,17 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public void deleteAppointmentById(Long id) {
-
+        repository.deleteById(id);
     }
 
     @Override
     public Appointment searchAppointmentById(Long id) {
-        return null;
+        return mapper.map(repository.findById(id), Appointment.class);
     }
 
 
     @Override
     public void updateAppointmentById(Appointment appointment) {
-
+        repository.save(mapper.map(appointment,AppointmentEntity.class));
     }
 }
