@@ -12,4 +12,5 @@ import lombok.ToString;
 public class FeedBack {
     private Integer id;
     private String description;
+    private String customerName;
 }

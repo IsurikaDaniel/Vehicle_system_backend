@@ -19,4 +19,5 @@ public class FeedBackEntity {
 
     private Integer id;
     private String description;
+    private String customerName;
 }
