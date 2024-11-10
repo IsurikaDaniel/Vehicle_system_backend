@@ -14,4 +14,10 @@ public class VehicleAcc {
     private String vehicleType;
     private String vehicleNumber;
     private String cheekyNumber;
+
+    public VehicleAcc(String vehicleType, String vehicleNumber, String cheekyNumber) {
+        this.vehicleType = vehicleType;
+        this.vehicleNumber = vehicleNumber;
+        this.cheekyNumber = cheekyNumber;
+    }
 }

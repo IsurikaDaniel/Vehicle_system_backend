@@ -19,4 +19,15 @@ public class Appointment {
     private LocalDate date;
     private String location;
     private String service;
+
+    public Appointment(String name, String vehicleType, String number, String email, LocalDate date, String location, String service) {
+        this.name = name;
+        this.vehicleType = vehicleType;
+        this.number = number;
+        this.email = email;
+        this.date = date;
+        this.location = location;
+        this.service = service;
+    }
+
 }

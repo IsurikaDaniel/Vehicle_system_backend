@@ -16,4 +16,11 @@ public class CustomerAcc {
     private String email;
     private String address;
 
+    public CustomerAcc(String name, String contact, String email, String address) {
+        this.name = name;
+        this.contact = contact;
+        this.email = email;
+        this.address = address;
+    }
+
 }
