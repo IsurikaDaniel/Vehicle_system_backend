@@ -19,4 +19,5 @@ public class AccountEntity {
     private Integer id;
     private String password;
     private String email;
+    private String role;
 }

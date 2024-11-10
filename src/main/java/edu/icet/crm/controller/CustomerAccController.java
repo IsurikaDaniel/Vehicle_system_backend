@@ -1,5 +1,6 @@
 package edu.icet.crm.controller;
 
+import edu.icet.crm.dto.Account;
 import edu.icet.crm.dto.CustomerAcc;
 import edu.icet.crm.service.CustomerAccService;
 import lombok.RequiredArgsConstructor;
@@ -43,4 +44,6 @@ public class CustomerAccController {
     public void updateCustomerAcc(@RequestBody CustomerAcc customerAcc){
         service.updateCustomerAcc(customerAcc);
     }
+
+
 }

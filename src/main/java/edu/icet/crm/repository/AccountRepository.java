@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AccountRepository extends CrudRepository<AccountEntity,Integer> {
-    Boolean existsByEmailAndPassword(String email, String password);
+
 }

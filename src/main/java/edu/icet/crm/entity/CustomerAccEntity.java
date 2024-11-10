@@ -21,4 +21,6 @@ public class CustomerAccEntity {
     private String contact;
     private String email;
     private String address;
+    private String vehicleType;
+    private String vehicleNumber;
 }

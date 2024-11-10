@@ -29,8 +29,5 @@ public class AccountController {
         service.addAccount(account);
     }
 
-    @PostMapping("/login")
-    public boolean validateLogin(@RequestBody Account login){
-        return service.validateLogin(login);
-    }
+
 }

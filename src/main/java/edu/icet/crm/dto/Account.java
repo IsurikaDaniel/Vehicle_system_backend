@@ -13,10 +13,12 @@ public class Account {
     private Integer id;
     private String password;
     private String email;
+    private String role;
 
-    public Account(String password, String email) {
+    public Account(String password, String email ,  String role) {
         this.password = password;
         this.email = email;
+        this.role = role;
     }
 
 

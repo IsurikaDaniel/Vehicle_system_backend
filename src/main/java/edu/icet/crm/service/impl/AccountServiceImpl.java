@@ -1,15 +1,15 @@
 package edu.icet.crm.service.impl;
 
 import edu.icet.crm.dto.Account;
+import edu.icet.crm.dto.Appointment;
 import edu.icet.crm.entity.AccountEntity;
-import edu.icet.crm.entity.AppointmentEntity;
 import edu.icet.crm.repository.AccountRepository;
-import edu.icet.crm.repository.AppointmentRepository;
 import edu.icet.crm.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +21,11 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<Account> getAll() {
-        return List.of();
+        List<Account> accountArrayList = new ArrayList<>();
+        repository.findAll().forEach(entity->{
+            accountArrayList.add(mapper.map(entity, Account.class));
+        });
+        return accountArrayList;
     }
 
     @Override
@@ -29,10 +33,5 @@ public class AccountServiceImpl implements AccountService {
         repository.save(mapper.map(account, AccountEntity.class));
     }
 
-    @Override
-    public Boolean validateLogin(Account login) {
-        System.out.println(login.toString());
-        //log.info(login.toString());
-        return repository.existsByEmailAndPassword(login.getEmail(), login.getPassword());
-    }
+
 }
