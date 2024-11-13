@@ -2,7 +2,10 @@ package edu.icet.crm.controller;
 
 import edu.icet.crm.dto.Appointment;
 import edu.icet.crm.service.AppointmentService;
+
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,7 @@ import java.util.List;
 @RequestMapping("/Appointment")
 @RequiredArgsConstructor
 public class AppointmentController {
+    private static final Logger logger = LoggerFactory.getLogger(Appointment.class);
 
     @Autowired
     final AppointmentService service;
@@ -22,10 +26,10 @@ public class AppointmentController {
     public List<Appointment> getAppointment(){
         return service.getAll();
     }
-
     @PostMapping("/add-appointment")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addAppointment(@RequestBody Appointment appointment){
+    public void addAppointment(@RequestBody Appointment appointment) {
+        logger.info("Received request to add appointment: {}", appointment);
         service.addAppointment(appointment);
     }
 
