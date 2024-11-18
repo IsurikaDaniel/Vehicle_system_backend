@@ -5,6 +5,7 @@ import edu.icet.crm.entity.AppointmentEntity;
 import edu.icet.crm.repository.AppointmentRepository;
 import edu.icet.crm.service.AppointmentService;
 import edu.icet.crm.service.EmailService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -21,7 +22,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepository repository;
     private final ModelMapper mapper;
     private final EmailService emailService;
-    private static final Logger logger = LoggerFactory.getLogger(AppointmentServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(AppointmentService.class);
 
     @Override
     public List<Appointment> getAll() {
@@ -32,25 +33,31 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentArrayList;
     }
 
+
     @Override
+    @Transactional
     public void addAppointment(Appointment appointment) {
-        // Check for null email or name to avoid issues
         if (appointment.getEmail() == null || appointment.getName() == null) {
             logger.error("Email or Name is missing. Cannot send confirmation email.");
             return;
         }
 
-        // Save the appointment
         try {
+            // Save the appointment
             AppointmentEntity appointmentEntity = mapper.map(appointment, AppointmentEntity.class);
             repository.save(appointmentEntity);
             logger.info("Appointment saved successfully for {}", appointment.getName());
 
-            // Use EmailService to send the confirmation email
-            emailService.sendAppointmentConfirmation(appointment.getEmail(), appointment.getName());
-
+            // Send confirmation email
+            //boolean emailSent = emailService.sendAppointmentConfirmation(appointment.getEmail(), appointment.getName());
+//            if (emailSent) {
+//                logger.info("Confirmation email sent to {}", appointment.getEmail());
+//            } else {
+//                logger.warn("Failed to send confirmation email to {}", appointment.getEmail());
+//            }
         } catch (Exception e) {
-            logger.error("Error occurred while saving appointment for {} with email {}", appointment.getName(), appointment.getEmail(), e);
+            logger.error("Error occurred while processing appointment for {} with email {}",
+                    appointment.getName(), appointment.getEmail(), e);
         }
     }
 
@@ -68,5 +75,4 @@ public class AppointmentServiceImpl implements AppointmentService {
     public void updateAppointmentById(Appointment appointment) {
         repository.save(mapper.map(appointment, AppointmentEntity.class));
     }
-
 }
