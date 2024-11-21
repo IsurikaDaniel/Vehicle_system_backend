@@ -15,12 +15,4 @@ public class Account {
     private String email;
     private String role;
 
-    public Account(String password, String email ,  String role) {
-        this.password = password;
-        this.email = email;
-        this.role = role;
-    }
-
-
-
 }

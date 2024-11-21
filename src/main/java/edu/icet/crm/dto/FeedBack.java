@@ -14,9 +14,5 @@ public class FeedBack {
     private String description;
     private String customerName;
 
-    public FeedBack(String description, String customerName) {
-        this.description = description;
-        this.customerName = customerName;
-    }
 
 }

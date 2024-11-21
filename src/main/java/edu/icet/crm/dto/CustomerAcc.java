@@ -18,14 +18,4 @@ public class CustomerAcc {
     private String vehicleType;
     private String vehicleNumber;
 
-    public CustomerAcc(String name, String contact, String email, String address, String vehicleType, String vehicleNumber) {
-        this.name = name;
-        this.contact = contact;
-        this.email = email;
-        this.address = address;
-        this.vehicleType = vehicleType;
-        this.vehicleNumber = vehicleNumber;
-    }
-
-
 }
