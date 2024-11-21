@@ -20,6 +20,6 @@ public class EmailController {
 
     @PostMapping("/sendEmail")
     public ResponseEntity<ApiResponse> sendEmail(@RequestBody Email email){
-        return service.sendingEmail(email);
+        return service.sendEmail(email);
     }
 }

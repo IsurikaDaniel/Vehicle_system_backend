@@ -30,7 +30,7 @@ public class CustomerAccController {
 
     @GetMapping("/search-by-id/{id}")
     public  CustomerAcc searchCustomerAccById(@PathVariable Integer id){
-       return service.searchCustomerAccById(id);
+        return service.searchCustomerAccById(id);
     }
 
     @DeleteMapping("/delete-by-id/{id}")
