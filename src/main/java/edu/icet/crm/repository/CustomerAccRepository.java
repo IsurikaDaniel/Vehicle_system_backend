@@ -9,5 +9,4 @@ import java.util.Optional;
 @Repository
 public interface CustomerAccRepository extends CrudRepository<CustomerAccEntity,Integer> {
     Optional<CustomerAccEntity> findByEmail(String email);
-    Optional<CustomerAccEntity> findById(String email);
 }

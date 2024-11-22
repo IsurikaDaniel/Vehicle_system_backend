@@ -34,19 +34,8 @@ public class CustomerAccServiceImpl implements CustomerAccService {
 
     @Override
     public void updateCustomerAcc(CustomerAcc customerAcc) {
-        // Fetch the existing CustomerAccEntity using email
-        CustomerAccEntity existingEntity = repository.findById(customerAcc.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("CustomerAcc with email " + customerAcc.getEmail() + " not found"));
+        repository.save(mapper.map(customerAcc, CustomerAccEntity.class));
 
-        // Update the fields
-        existingEntity.setName(customerAcc.getName());
-        existingEntity.setContact(customerAcc.getContact());
-        existingEntity.setAddress(customerAcc.getAddress());
-        existingEntity.setVehicleType(customerAcc.getVehicleType());
-        existingEntity.setVehicleNumber(customerAcc.getVehicleNumber());
-
-        // Save the updated entity
-        repository.save(existingEntity);
     }
 
 
