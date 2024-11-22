@@ -89,8 +89,17 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public void updateAppointmentById(Appointment appointment) {
-        repository.save(mapper.map(appointment, AppointmentEntity.class));
+        // Fetch the existing entity from the database
+        AppointmentEntity existingEntity = repository.findById(appointment.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Appointment with ID " + appointment.getId() + " not found"));
+
+        // Update the fields of the existing entity with values from the input
+        mapper.map(appointment, existingEntity);
+
+        // Save the updated entity
+        repository.save(existingEntity);
     }
+
 }
 
 

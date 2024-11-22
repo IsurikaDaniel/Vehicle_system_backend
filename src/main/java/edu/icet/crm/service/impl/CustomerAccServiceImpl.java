@@ -20,8 +20,8 @@ public class CustomerAccServiceImpl implements CustomerAccService {
 
     @Override
     public List<CustomerAcc> getAll() {
-        List<CustomerAcc> customerAccArrayList= new ArrayList<>();
-        repository.findAll().forEach(entity->{
+        List<CustomerAcc> customerAccArrayList = new ArrayList<>();
+        repository.findAll().forEach(entity -> {
             customerAccArrayList.add(mapper.map(entity, CustomerAcc.class));
         });
         return customerAccArrayList;
@@ -34,9 +34,22 @@ public class CustomerAccServiceImpl implements CustomerAccService {
 
     @Override
     public void updateCustomerAcc(CustomerAcc customerAcc) {
-        repository.save(mapper.map(customerAcc, CustomerAccEntity.class));
+        // Fetch the existing CustomerAccEntity using email
+        CustomerAccEntity existingEntity = repository.findById(customerAcc.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("CustomerAcc with email " + customerAcc.getEmail() + " not found"));
 
+        // Update the fields
+        existingEntity.setName(customerAcc.getName());
+        existingEntity.setContact(customerAcc.getContact());
+        existingEntity.setAddress(customerAcc.getAddress());
+        existingEntity.setVehicleType(customerAcc.getVehicleType());
+        existingEntity.setVehicleNumber(customerAcc.getVehicleNumber());
+
+        // Save the updated entity
+        repository.save(existingEntity);
     }
+
+
 
     @Override
     public void deleteCustomerAccById(Integer id) {

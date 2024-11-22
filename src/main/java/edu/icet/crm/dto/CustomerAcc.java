@@ -10,12 +10,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerAcc {
-    private Integer id;
     private String name;
     private String contact;
     private String email;
     private String address;
     private String vehicleType;
     private String vehicleNumber;
+
 
 }

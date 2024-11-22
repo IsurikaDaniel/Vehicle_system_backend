@@ -11,6 +11,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @ToString
 public class Appointment {
+
+    private Long id;
+    private String email;
     private String name;
     private String vehicleType;
     private String vehicleNumber;
@@ -18,7 +21,17 @@ public class Appointment {
     private LocalDate date;
     private String location;
     private String service;
-    private String email;
+
+    public Appointment(String name, String vehicleType, String vehicleNumber, String number, LocalDate date, String location, String service, String email) {
+        this.name = name;
+        this.vehicleType = vehicleType;
+        this.vehicleNumber = vehicleNumber;
+        this.number = number;
+        this.date = date;
+        this.location = location;
+        this.service = service;
+        this.email = email;
+    }
 
 
 }
