@@ -1,7 +1,6 @@
 package edu.icet.crm.service.impl;
 
 import edu.icet.crm.dto.FeedBack;
-import edu.icet.crm.entity.CustomerAccEntity;
 import edu.icet.crm.entity.FeedBackEntity;
 import edu.icet.crm.repository.FeedBackRepository;
 import edu.icet.crm.service.FeedBackService;

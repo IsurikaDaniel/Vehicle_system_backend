@@ -35,10 +35,7 @@ public class CustomerAccServiceImpl implements CustomerAccService {
     @Override
     public void updateCustomerAcc(CustomerAcc customerAcc) {
         repository.save(mapper.map(customerAcc, CustomerAccEntity.class));
-
     }
-
-
 
     @Override
     public void deleteCustomerAccById(Integer id) {

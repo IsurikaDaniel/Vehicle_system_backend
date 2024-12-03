@@ -35,9 +35,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public List<Appointment> getAll() {
         List<Appointment> appointmentArrayList = new ArrayList<>();
-        repository.findAll().forEach(entity -> {
-            appointmentArrayList.add(mapper.map(entity, Appointment.class));
-        });
+        repository.findAll().forEach(entity -> appointmentArrayList.add(mapper.map(entity, Appointment.class)));
         return appointmentArrayList;
     }
 
